@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>💖 A Special Surprise 💖</title>
+<title>Happy Valentine's Day ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 body{
@@ -12,20 +11,18 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#ff758c,#ff7eb3);
+background:linear-gradient(135deg,#ff6a88,#ff99ac);
 font-family:Arial;
 overflow:hidden;
 color:white;
 text-align:center;
 }
 
-/* Card */
 .card{
 background:rgba(255,255,255,0.15);
 padding:40px;
 border-radius:20px;
-backdrop-filter:blur(12px);
-box-shadow:0 0 25px rgba(0,0,0,0.2);
+backdrop-filter:blur(10px);
 animation:fade 2s ease;
 }
 
@@ -34,7 +31,16 @@ from{opacity:0;transform:translateY(40px);}
 to{opacity:1;}
 }
 
-/* Hearts animation */
+h1{
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.07);}
+100%{transform:scale(1);}
+}
+
 .heart{
 position:absolute;
 animation:float 6s linear infinite;
@@ -46,80 +52,37 @@ to{transform:translateY(-10vh);opacity:0;}
 }
 
 button{
-margin:10px;
 padding:12px 25px;
 border:none;
 border-radius:25px;
-font-size:16px;
-cursor:pointer;
-}
-
-#yes{
 background:white;
 color:#ff4d6d;
+cursor:pointer;
+font-size:16px;
 }
 
-#no{
-background:#ff4d6d;
-color:white;
-position:absolute;
-}
-
-#message{
-margin-top:20px;
-font-size:20px;
-display:none;
-}
+#msg{display:none;margin-top:20px;}
 </style>
 </head>
 
 <body>
 
 <div class="card">
-<h1 id="typing"></h1>
+<h1>💖 Happy Valentine's Day 💖</h1>
+<p>You make the world more beautiful.</p>
 
-<h2>Will you be my Valentine? 💕</h2>
+<button onclick="show()">Click Here ❤️</button>
 
-<button id="yes" onclick="accepted()">YES ❤️</button>
-<button id="no" onmouseover="moveButton()">NO 😢</button>
-
-<div id="message">
-💖 You just made my day the happiest ever! 💖<br>
-Happy Valentine's Day 🌹
+<div id="msg">
+🌹 May your life be filled with love, happiness, and endless smiles 💕
 </div>
 </div>
-
-<!-- Romantic Music -->
-<audio autoplay loop>
-<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
 
 <script>
-/* Typing animation */
-const text="Someone has a special message for you...";
-let i=0;
-function typing(){
-if(i<text.length){
-document.getElementById("typing").innerHTML+=text.charAt(i);
-i++;
-setTimeout(typing,60);
-}
-}
-typing();
-
-/* YES button action */
-function accepted(){
-document.getElementById("message").style.display="block";
+function show(){
+document.getElementById("msg").style.display="block";
 }
 
-/* Moving NO button */
-function moveButton(){
-const btn=document.getElementById("no");
-btn.style.top=Math.random()*80+"%";
-btn.style.left=Math.random()*80+"%";
-}
-
-/* Floating hearts */
 function heart(){
 let h=document.createElement("div");
 h.className="heart";
