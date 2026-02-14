@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine's Day ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg,#ff758c,#ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+}
+
+/* Floating hearts */
+.heart {
+    position: absolute;
+    color: rgba(255,255,255,0.8);
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+    }
+}
+
+.card {
+    background: rgba(255,255,255,0.15);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px rgba(0,0,0,0.2);
+    animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+    from {opacity:0; transform: translateY(40px);}
+    to {opacity:1; transform: translateY(0);}
+}
+
+h1 {
+    font-size: 2.5em;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.05);}
+    100% {transform: scale(1);}
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    background: white;
+    color: #ff4d6d;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+.message {
+    margin-top: 20px;
+    font-size: 18px;
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>💖 Happy Valentine's Day 💖</h1>
+    <p>You are someone truly special.</p>
+
+    <button onclick="showMessage()">Click for a Surprise ❤️</button>
+
+    <div class="message" id="msg">
+        🌹 May your day be filled with love, smiles,
+        and beautiful moments that last forever. 💕
+    </div>
+</div>
+
+<script>
+function showMessage(){
+    document.getElementById("msg").style.display="block";
+}
+
+/* Generate floating hearts */
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = Math.random()*20 + 15 + "px";
+    heart.style.animationDuration = Math.random()*3 + 3 + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>heart.remove(),6000);
+}
+
+setInterval(createHeart,300);
+</script>
+
+</body>
+</html>
